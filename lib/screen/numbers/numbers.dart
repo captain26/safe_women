@@ -112,9 +112,9 @@ class _NumbersPageState extends State<NumbersPage> {
                 color: Color(0xffffffff),
               ),
               BoxShadow(
-                blurRadius: 10,
+                blurRadius: 20,
                 offset: Offset(10, 10),
-                color: Color(0xffa1a1a1),
+                color: Colors.teal,
               )
             ],
           ),

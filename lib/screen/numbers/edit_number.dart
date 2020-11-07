@@ -57,11 +57,11 @@ class _EditNumberState extends State<EditNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(215, 229, 243, 1),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black54),
         elevation: 0.0,
-        backgroundColor: Color.fromRGBO(215, 229, 243, 1),
+        backgroundColor: Colors.white,
         toolbarHeight: 100.0,
         title: Text(
           'Edit Number',
@@ -69,107 +69,110 @@ class _EditNumberState extends State<EditNumber> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Color.fromRGBO(227, 237, 247, 1),
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    spreadRadius: -10,
-                    blurRadius: 17,
-                    offset: Offset(5, 5),
-                    color: Colors.white,
-                  ),
-                  BoxShadow(
-                    spreadRadius: -2,
-                    blurRadius: 10,
-                    offset: Offset(10.5, 10.5),
-                    color: Color.fromRGBO(193, 214, 233, 1),
-                  )
-                ],
-              ),
-              child: Column(
-                children: [
-                  Form(
-                  key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Column(
-                      children: [
-                        Theme(
-                          data: Theme.of(context).copyWith(primaryColor: Color(0xff43a047)),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            onChanged: (Contactname) {
-                              name = Contactname;
-                              _updateState();
-                            },
-                            decoration: new InputDecoration(
-                              icon: Icon(Icons.perm_phone_msg),
-                              labelText: "Name",
-                              fillColor: Colors.white,
-                              border: new OutlineInputBorder(
-                                borderRadius: new BorderRadius.circular(25.0),
-                                borderSide: new BorderSide(),
-                              ),
-                              // fillColor: Colors.green
-                            ),
-                            onSaved: (value) {
-                              updateName = value;
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Theme(
-                          data: Theme.of(context).copyWith(primaryColor: Color(0xff43a047)),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            maxLength: 10,
-                            onChanged: (phoneNumber) {
-                              number = int.tryParse(phoneNumber);
-                              _updateState();
-                            },
-                            decoration: new InputDecoration(
-                              icon: Icon(Icons.perm_phone_msg),
-                              labelText: "Phone Number",
-                              fillColor: Colors.white,
-                              border: new OutlineInputBorder(
-                                borderRadius: new BorderRadius.circular(25.0),
-                                borderSide: new BorderSide(),
-                              ),
-                              // fillColor: Colors.green
-                            ),
-                            onSaved: (value) {
-                              updateNumber = int.tryParse(value);
-                            },
-                          ),
-                        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
 
-                        SizedBox(height: 20,),
-                        OutlineButton(
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text('Update',style: TextStyle(fontSize: 18),),
+                      blurRadius: 17,
+                      offset: Offset(5, 5),
+                      color: Colors.white,
+                    ),
+                    BoxShadow(
+
+                      blurRadius: 20,
+                      offset: Offset(10.5, 10.5),
+                      color: Color(0xff43a047),
+                    )
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Form(
+                    key: _formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: Column(
+                        children: [
+                          Theme(
+                            data: Theme.of(context).copyWith(primaryColor: Color(0xff43a047)),
+                            child: TextFormField(
+                              keyboardType: TextInputType.number,
+                              onChanged: (Contactname) {
+                                name = Contactname;
+                                _updateState();
+                              },
+                              decoration: new InputDecoration(
+                                icon: Icon(Icons.contacts),
+                                labelText: "Name",
+                                fillColor: Colors.white,
+                                border: new OutlineInputBorder(
+                                  borderRadius: new BorderRadius.circular(25.0),
+                                  borderSide: new BorderSide(),
+                                ),
+                                // fillColor: Colors.green
+                              ),
+                              onSaved: (value) {
+                                updateName = value;
+                              },
+                            ),
                           ),
-                          borderSide: BorderSide(color: Color(0xff43a047)),
-                          highlightColor: Colors.green,
-                          color: submitEnabled ? Color(0xff43a047): Colors.greenAccent[500],
-                          onPressed: submitEnabled ? _update : null,
-                        ),
-                      ],
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Theme(
+                            data: Theme.of(context).copyWith(primaryColor: Color(0xff43a047)),
+                            child: TextFormField(
+                              keyboardType: TextInputType.number,
+                              maxLength: 10,
+                              onChanged: (phoneNumber) {
+                                number = int.tryParse(phoneNumber);
+                                _updateState();
+                              },
+                              decoration: new InputDecoration(
+                                icon: Icon(Icons.perm_phone_msg),
+                                labelText: "Phone Number",
+                                fillColor: Colors.white,
+                                border: new OutlineInputBorder(
+                                  borderRadius: new BorderRadius.circular(25.0),
+                                  borderSide: new BorderSide(),
+                                ),
+                                // fillColor: Colors.green
+                              ),
+                              onSaved: (value) {
+                                updateNumber = int.tryParse(value);
+                              },
+                            ),
+                          ),
+
+                          SizedBox(height: 20,),
+                          OutlineButton(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text('Update',style: TextStyle(fontSize: 18,color: submitEnabled ? Color(0xff43a047): Colors.greenAccent[500],),),
+                            ),
+                            borderSide: BorderSide(color: Color(0xff43a047)),
+                            highlightColor: Colors.green,
+                            color: submitEnabled ? Color(0xff43a047): Colors.greenAccent[500],
+                            onPressed: submitEnabled ? _update : null,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                ]
                 ),
-              ]
               ),
-            ),
-            SizedBox(height: 40,)
-          ],
+              SizedBox(height: 40,)
+            ],
+          ),
         ),
       ),
     );

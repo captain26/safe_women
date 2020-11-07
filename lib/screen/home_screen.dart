@@ -184,9 +184,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Align(
                               child: Text(
-                                'Tap to start ',
+                                toogleValue ? 'Tap to stop': 'Tap to start',
                                 style: TextStyle(
-                                    fontSize: 18, color: Colors.red[300]),
+                                    fontSize: 18, color: toogleValue
+                                    ? Colors.green[900].withOpacity(1)
+                                    : Colors.red[500].withOpacity(1),),
                               ),
 
                             ),
@@ -194,7 +196,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Text(
                               'Location Stream ',
                               style: TextStyle(
-                                  fontSize: 18, color: Colors.red[300]),
+                                  fontSize: 18, color: toogleValue
+                                  ? Colors.green[900].withOpacity(1)
+                                  : Colors.red[500].withOpacity(1),),
                             )),
                           ],
                         ),

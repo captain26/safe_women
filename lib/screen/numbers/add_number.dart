@@ -50,40 +50,41 @@ class _AddNumberState extends State<AddNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(215, 229, 243, 1),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black54),
         elevation: 0.0,
-        backgroundColor: Color.fromRGBO(215, 229, 243, 1),
+        backgroundColor: Colors.white,
         toolbarHeight: 100.0,
         title: Text(
           'Add Number',
           style: TextStyle(color: Colors.black54, fontSize: 30),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.max,
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(227, 237, 247, 1),
+                  color: Colors.white,
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
-                      spreadRadius: -10,
-                      blurRadius: 17,
-                      offset: Offset(5, 5),
+                      blurRadius: 10,
+                      offset: Offset(-10,-10),
                       color: Colors.white,
                     ),
                     BoxShadow(
-                      spreadRadius: -2,
-                      blurRadius: 10,
-                      offset: Offset(10.5, 10.5),
-                      color: Color.fromRGBO(193, 214, 233, 1),
+                      blurRadius: 20,
+                      offset: Offset(10, 10),
+                      color: Colors.orange[200],
                     )
+
                   ],
                 ),
                 child: Column(
@@ -158,6 +159,7 @@ class _AddNumberState extends State<AddNumber> {
                                     'Save',
                                     style: TextStyle(
                                       fontSize: 18,
+                                      color:  submitEnabled ? Colors.orange[900] : Colors.black54,
                                     ),
                                   ),
                                 ),
