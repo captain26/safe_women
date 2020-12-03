@@ -49,135 +49,145 @@ class _AddNumberState extends State<AddNumber> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black54),
-        elevation: 0.0,
-        backgroundColor: Colors.white,
-        toolbarHeight: 100.0,
-        title: Text(
-          'Add Number',
-          style: TextStyle(color: Colors.black54, fontSize: 30),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            'icons/2.png',
+          ),
+          fit: BoxFit.cover,
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 10,
-                      offset: Offset(-10,-10),
-                      color: Colors.white,
-                    ),
-                    BoxShadow(
-                      blurRadius: 20,
-                      offset: Offset(10, 10),
-                      color: Colors.orange[200],
-                    )
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black54),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          toolbarHeight: 100.0,
+          title: Text(
+            'Add Number',
+            style: TextStyle(color: Colors.black54, fontSize: 30),
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 10,
+                        offset: Offset(-10,-10),
+                        color: Colors.white,
+                      ),
+                      BoxShadow(
+                        blurRadius: 20,
+                        offset: Offset(10, 10),
+                        color: Colors.orange[200],
+                      )
 
-                  ],
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Form(
-                      key: _formKey,
-                      child: Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              Theme(
-                                data: Theme.of(context)
-                                    .copyWith(primaryColor: Colors.orange[900]),
-                                child: TextFormField(
-                                  decoration: new InputDecoration(
-                                    icon: Icon(Icons.contacts),
-                                    labelText: "Name",
-                                    fillColor: Colors.white,
-                                    border: new OutlineInputBorder(
-                                      borderRadius: new BorderRadius.circular(25.0),
-                                      borderSide: new BorderSide(),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Form(
+                        key: _formKey,
+                        child: Padding(
+                          padding: const EdgeInsets.all(30.0),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(primaryColor: Colors.orange[900]),
+                                  child: TextFormField(
+                                    decoration: new InputDecoration(
+                                      icon: Icon(Icons.contacts),
+                                      labelText: "Name",
+                                      fillColor: Colors.white,
+                                      border: new OutlineInputBorder(
+                                        borderRadius: new BorderRadius.circular(25.0),
+                                        borderSide: new BorderSide(),
+                                      ),
+                                      // fillColor: Colors.green
                                     ),
-                                    // fillColor: Colors.green
-                                  ),
-                                  onChanged: (name) {
-                                    Contactname = name;
-                                    _updateState();
-                                  },
-                                  onSaved: (value) {
-                                    addName = value;
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Theme(
-                                data: Theme.of(context)
-                                    .copyWith(primaryColor: Colors.orange[900]),
-                                child: TextFormField(
-                                  keyboardType: TextInputType.number,
-                                  decoration: new InputDecoration(
-                                    icon: Icon(Icons.perm_phone_msg),
-                                    labelText: "Phone Number",
-                                    fillColor: Colors.white,
-                                    border: new OutlineInputBorder(
-                                      borderRadius: new BorderRadius.circular(25.0),
-                                      borderSide: new BorderSide(),
-                                    ),
-                                    // fillColor: Colors.green
-                                  ),
-                                  maxLength: 10,
-                                  onChanged: (phoneNumber) {
-                                    phonenumber = int.tryParse(phoneNumber);
-                                    _updateState();
-                                  },
-                                  onSaved: (value) {
-                                    addNumber = int.tryParse(value);
-                                  },
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              OutlineButton(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Text(
-                                    'Save',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color:  submitEnabled ? Colors.orange[900] : Colors.black54,
-                                    ),
+                                    onChanged: (name) {
+                                      Contactname = name;
+                                      _updateState();
+                                    },
+                                    onSaved: (value) {
+                                      addName = value;
+                                    },
                                   ),
                                 ),
-                                borderSide: BorderSide(color: Colors.orange[900]),
-                                highlightColor: Colors.orange[900],
-                                color: submitEnabled ? Colors.orange[900] : Colors.greenAccent,
-                                onPressed: submitEnabled ? _update : null,
-                              ),
-                            ],
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Theme(
+                                  data: Theme.of(context)
+                                      .copyWith(primaryColor: Colors.orange[900]),
+                                  child: TextFormField(
+                                    keyboardType: TextInputType.number,
+                                    decoration: new InputDecoration(
+                                      icon: Icon(Icons.perm_phone_msg),
+                                      labelText: "Phone Number",
+                                      fillColor: Colors.white,
+                                      border: new OutlineInputBorder(
+                                        borderRadius: new BorderRadius.circular(25.0),
+                                        borderSide: new BorderSide(),
+                                      ),
+                                      // fillColor: Colors.green
+                                    ),
+                                    maxLength: 10,
+                                    onChanged: (phoneNumber) {
+                                      phonenumber = int.tryParse(phoneNumber);
+                                      _updateState();
+                                    },
+                                    onSaved: (value) {
+                                      addNumber = int.tryParse(value);
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                OutlineButton(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      'Save',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color:  submitEnabled ? Colors.orange[900] : Colors.black54,
+                                      ),
+                                    ),
+                                  ),
+                                  borderSide: BorderSide(color: Colors.orange[900]),
+                                  highlightColor: Colors.orange[900],
+                                  color: submitEnabled ? Colors.orange[900] : Colors.greenAccent,
+                                  onPressed: submitEnabled ? _update : null,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 40,)
-            ],
+                SizedBox(height: 40,)
+              ],
+            ),
           ),
         ),
       ),

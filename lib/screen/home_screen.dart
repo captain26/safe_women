@@ -98,188 +98,229 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 100,
-        title: Text(
-          'Women Security',
-          style: TextStyle(color: Colors.black54, fontSize: 30),
-        ),
-        backgroundColor: Color(0xffffffff),
-        elevation: 0.0,
-        actions: [
-          NeuHamburgerButton(
-            child: Icon(
-              Icons.settings,
-            ),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/numberScreen');
-            },
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            'icons/2.png',
           ),
-        ],
+          fit: BoxFit.cover,
+        ),
       ),
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(height: 50.0,),
-                LayoutBuilder(
-                  builder: (context, constraint) => Container(
-                    height: 250,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xfff7f7f7),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 36,
-                          color: toogleValue
-                              ? Colors.greenAccent[200].withOpacity(1)
-                              : Colors.redAccent[100].withOpacity(1),
-                          offset: Offset(12,12),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          toolbarHeight: 100,
+          title: Text(
+            'Women Security',
+            style: TextStyle(color: Colors.black54, fontSize: 30),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          actions: [
+            NeuHamburgerButton(
+              child: Icon(
+                Icons.settings,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/numberScreen');
+              },
+            ),
+          ],
+        ),
+        body: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    height: 50.0,
+                  ),
+                  LayoutBuilder(
+                    builder: (context, constraint) => Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xfff7f7f7),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 36,
+                            color: toogleValue
+                                ? Colors.greenAccent[200].withOpacity(1)
+                                : Colors.redAccent[100].withOpacity(1),
+                            offset: Offset(12, 12),
+                          ),
+                          BoxShadow(
+                            blurRadius: 36,
+                            color: Color(0xffffffff),
+                            offset: Offset(-12, -12),
+                          ),
+                        ],
+                        gradient: LinearGradient(
+                          stops: [0, 1],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Color(0xffdedede), Color(0xffffffff)],
                         ),
-                        BoxShadow(
-                          blurRadius: 36,
-                          color: Color(0xffffffff),
-                          offset: Offset(-12,-12),
-                        ),
-                      ],
-                      gradient: LinearGradient(
-                        stops: [0,1],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [Color(0xffdedede), Color(0xffffffff)],
                       ),
 
-                    ),
-
-                    // height: 250,
-                    // decoration: BoxDecoration(
-                    //   color: Color.fromRGBO(227, 237, 247, 1),
-                    //   shape: BoxShape.circle,
-                    //   boxShadow: [
-                    //     BoxShadow(
-                    //       spreadRadius: -10,
-                    //       blurRadius: 17,
-                    //       offset: Offset(5, 5),
-                    //       color: Colors.white,
-                    //     ),
-                    //     BoxShadow(
-                    //       spreadRadius: -2,
-                    //       blurRadius: 10,
-                    //       offset: Offset(10.5, 10.5),
-                    //       color: Color.fromRGBO(193, 214, 233, 1),
-                    //     )
-                    //   ],
-                    // ),
-                    child: Stack(
-                      children: [
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 35,
-                            ),
-                            Align(
-                              child: Text(
-                                toogleValue ? 'Tap to stop': 'Tap to start',
-                                style: TextStyle(
-                                    fontSize: 18, color: toogleValue
-                                    ? Colors.green[900].withOpacity(1)
-                                    : Colors.red[500].withOpacity(1),),
+                      // height: 250,
+                      // decoration: BoxDecoration(
+                      //   color: Color.fromRGBO(227, 237, 247, 1),
+                      //   shape: BoxShape.circle,
+                      //   boxShadow: [
+                      //     BoxShadow(
+                      //       spreadRadius: -10,
+                      //       blurRadius: 17,
+                      //       offset: Offset(5, 5),
+                      //       color: Colors.white,
+                      //     ),
+                      //     BoxShadow(
+                      //       spreadRadius: -2,
+                      //       blurRadius: 10,
+                      //       offset: Offset(10.5, 10.5),
+                      //       color: Color.fromRGBO(193, 214, 233, 1),
+                      //     )
+                      //   ],
+                      // ),
+                      child: Stack(
+                        children: [
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 35,
                               ),
-
-                            ),
-                            Align(
+                              Align(
                                 child: Text(
-                              'Location Stream ',
-                              style: TextStyle(
-                                  fontSize: 18, color: toogleValue
-                                  ? Colors.green[900].withOpacity(1)
-                                  : Colors.red[500].withOpacity(1),),
-                            )),
-                          ],
-                        ),
-                        Center(
-                          child: InkWell(
-                            onTap: () => toggleButton(context),
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 1000),
-                              height: 60.0,
-                              width: 200.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30.0),
-                                color: toogleValue
-                                    ? Colors.greenAccent[100]
-                                    : Colors.redAccent[100].withOpacity(0.5),
-                              ),
-                              child: Stack(
-                                children: [
-                                  AnimatedPositioned(
-                                    duration: Duration(milliseconds: 1000),
-                                    curve: Curves.easeIn,
-                                    top: 3.0,
-                                    left: toogleValue ? 130.0 : 0.0,
-                                    right: toogleValue ? 0.0 : 130.0,
-                                    child: AnimatedSwitcher(
-                                      duration: Duration(milliseconds: 1000),
-                                      transitionBuilder: (Widget child,
-                                          Animation<double> animation) {
-                                        return RotationTransition(
-                                          child: child,
-                                          turns: animation,
-                                        );
-                                      },
-                                      child: toogleValue
-                                          ? Icon(
-                                              Icons.check_circle,
-                                              color: Colors.green,
-                                              size: 55.0,
-                                              key: UniqueKey(),
-                                            )
-                                          : Icon(Icons.remove_circle_outline,
-                                              color: Colors.red,
-                                              size: 55.0,
-                                              key: UniqueKey()),
-                                    ),
+                                  toogleValue ? 'Tap to stop' : 'Tap to start',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: toogleValue
+                                        ? Colors.green[900].withOpacity(1)
+                                        : Colors.red[500].withOpacity(1),
                                   ),
-                                ],
+                                ),
+                              ),
+                              Align(
+                                  child: Text(
+                                'Location Stream ',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: toogleValue
+                                      ? Colors.green[900].withOpacity(1)
+                                      : Colors.red[500].withOpacity(1),
+                                ),
+                              )),
+                            ],
+                          ),
+                          Center(
+                            child: InkWell(
+                              onTap: () => toggleButton(context),
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 1000),
+                                height: 60.0,
+                                width: 200.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30.0),
+                                  color: toogleValue
+                                      ? Colors.greenAccent[100]
+                                      : Colors.redAccent[100].withOpacity(0.5),
+                                ),
+                                child: Stack(
+                                  children: [
+                                    AnimatedPositioned(
+                                      duration: Duration(milliseconds: 1000),
+                                      curve: Curves.easeIn,
+                                      top: 3.0,
+                                      left: toogleValue ? 130.0 : 0.0,
+                                      right: toogleValue ? 0.0 : 130.0,
+                                      child: AnimatedSwitcher(
+                                        duration: Duration(milliseconds: 1000),
+                                        transitionBuilder: (Widget child,
+                                            Animation<double> animation) {
+                                          return RotationTransition(
+                                            child: child,
+                                            turns: animation,
+                                          );
+                                        },
+                                        child: toogleValue
+                                            ? Icon(
+                                                Icons.check_circle,
+                                                color: Colors.green,
+                                                size: 55.0,
+                                                key: UniqueKey(),
+                                              )
+                                            : Icon(Icons.remove_circle_outline,
+                                                color: Colors.red,
+                                                size: 55.0,
+                                                key: UniqueKey()),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                DropdownButton(
+                                  value: _selectedItem,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _selectedItem = value;
+                                    });
+                                  },
+                                  items: _dropDownItems.map((int value) {
+                                    return DropdownMenuItem<int>(
+                                      child: Text('$value min'),
+                                      value: value,
+                                    );
+                                  }).toList(),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                // FlatButton(
-                //   child: Text('Get Data'),
-                //   onPressed: () async {
-                //     List<Map<String, dynamic>> queryRows =
-                //         await DatabaseHelper.instance.queryAll();
-                //     print(queryRows);
-                //   },
-                // ),
-                SizedBox(
-                  height: 30,
-                ),
-                NeuStartButton(
-                  onPressed: () async {
-                    await sendsosAlert();
-                  },
-                ),
-              ],
+                  // FlatButton(
+                  //   child: Text('Get Data'),
+                  //   onPressed: () async {
+                  //     List<Map<String, dynamic>> queryRows =
+                  //         await DatabaseHelper.instance.queryAll();
+                  //     print(queryRows);
+                  //   },
+                  // ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  NeuStartButton(
+                    onPressed: () async {
+                      await sendsosAlert();
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset('icons/girl.png', scale: 4),
-          ),
-
-        ],
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: Image.asset('icons/girl.png', scale: 4),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -50,96 +50,106 @@ class _NumbersPageState extends State<NumbersPage> {
   @override
   Widget build(BuildContext context) {
     print('HI I am Printed');
-    return Scaffold(
-      backgroundColor: Color(0xffffffff),
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black54),
-        elevation: 0.0,
-        backgroundColor: Color(0xffffffff),
-        toolbarHeight: 100.0,
-        title: Text(
-          'Numbers',
-          style: TextStyle(color: Colors.black54, fontSize: 30),
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            'icons/2.png',
+          ),
+          fit: BoxFit.cover,
         ),
-        actions: [
-          NeuHamburgerButton(
-            child: Icon(
-              Icons.add,
-            ),
-            onPressed: () async {
-              int length = await getData();
-              if (length >= 4) {
-                await PlatformAlertDialog(
-                  title: 'Failed',
-                  content: 'Maximum added number reached',
-                  defaultActionText: 'OK',
-                  onPressed: () => Navigator.of(context).pop(false),
-                ).show(context);
-              } else {
-                AddNumber.show(context);
-              }
-            },
-          ),
-          // IconButton(
-          //   icon: Icon(Icons.add),
-          //   onPressed: ()async {
-          //     int length = await getData();
-          //     if(length >= 4){
-          //      await PlatformAlertDialog(
-          //        title: 'Failed',
-          //        content: 'Maximum added number reached',
-          //        defaultActionText: 'OK',
-          //        onPressed: () => Navigator.of(context).pop(false),
-          //      ).show(context);
-          //     }else{
-          //     AddNumber.show(context);
-          //     }
-          //   },
-          // ),
-        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Color(0xffffffff),
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                offset: Offset(-10,-10),
-                color: Color(0xffffffff),
-              ),
-              BoxShadow(
-                blurRadius: 20,
-                offset: Offset(10, 10),
-                color: Colors.teal,
-              )
-            ],
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black54),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          toolbarHeight: 100.0,
+          title: Text(
+            'Numbers',
+            style: TextStyle(color: Colors.black54, fontSize: 30),
           ),
-          child: FutureBuilder(
-           future: DatabaseHelper.instance.getSQL(),
-           builder:
-               (BuildContext context, AsyncSnapshot snapshot) {
-             print(snapshot.data);
-             if (snapshot.data == null) {
-               return Container(
-                   child: Center(child: Text("Loading...")));
-             } else {
-               return ListView.builder(
-                 itemCount: snapshot.data.length,
-                 itemBuilder: (BuildContext context, int index) {
-                   return NumbersTile(
-                     id: snapshot.data[index].id,
-                     name: snapshot.data[index].name,
-                     phoneNumber: snapshot.data[index].phoneNumber,
-                   );
-                 },
-               );
-             }
-           },
-                        ),
+          actions: [
+            NeuHamburgerButton(
+              child: Icon(
+                Icons.add,
+              ),
+              onPressed: () async {
+                int length = await getData();
+                if (length >= 4) {
+                  await PlatformAlertDialog(
+                    title: 'Failed',
+                    content: 'Maximum added number reached',
+                    defaultActionText: 'OK',
+                    onPressed: () => Navigator.of(context).pop(false),
+                  ).show(context);
+                } else {
+                  AddNumber.show(context);
+                }
+              },
+            ),
+            // IconButton(
+            //   icon: Icon(Icons.add),
+            //   onPressed: ()async {
+            //     int length = await getData();
+            //     if(length >= 4){
+            //      await PlatformAlertDialog(
+            //        title: 'Failed',
+            //        content: 'Maximum added number reached',
+            //        defaultActionText: 'OK',
+            //        onPressed: () => Navigator.of(context).pop(false),
+            //      ).show(context);
+            //     }else{
+            //     AddNumber.show(context);
+            //     }
+            //   },
+            // ),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xffffffff),
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 10,
+                  offset: Offset(-10,-10),
+                  color: Color(0xffffffff),
+                ),
+                BoxShadow(
+                  blurRadius: 20,
+                  offset: Offset(10, 10),
+                  color: Colors.teal,
+                )
+              ],
+            ),
+            child: FutureBuilder(
+             future: DatabaseHelper.instance.getSQL(),
+             builder:
+                 (BuildContext context, AsyncSnapshot snapshot) {
+               print(snapshot.data);
+               if (snapshot.data == null) {
+                 return Container(
+                     child: Center(child: Text("Loading...")));
+               } else {
+                 return ListView.builder(
+                   itemCount: snapshot.data.length,
+                   itemBuilder: (BuildContext context, int index) {
+                     return NumbersTile(
+                       id: snapshot.data[index].id,
+                       name: snapshot.data[index].name,
+                       phoneNumber: snapshot.data[index].phoneNumber,
+                     );
+                   },
+                 );
+               }
+             },
+                          ),
+          ),
         ),
       ),
     );
