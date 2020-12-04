@@ -39,6 +39,7 @@ dependencies:
   flutter_shake_plugin: ^0.0.2
   sms_maintained: ^0.2.5
   toast: ^0.1.5
+  fancy_on_boarding: ^1.6.0
 
 
 
