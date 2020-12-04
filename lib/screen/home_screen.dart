@@ -9,6 +9,7 @@ import 'package:safe_women/common/neu_hamburger_button.dart';
 import 'package:safe_women/common/sos_button.dart';
 import 'package:safe_women/contacts/database_helper.dart';
 import 'package:safe_women/model/user_location_model.dart';
+import 'package:safe_women/screen/intro_screen.dart';
 import 'package:safe_women/screen/platform_alert_dialog.dart';
 import 'package:safe_women/screen/platform_exception_alert_dialog.dart';
 import 'package:safe_women/services/location_service.dart';
@@ -295,14 +296,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  // FlatButton(
-                  //   child: Text('Get Data'),
-                  //   onPressed: () async {
-                  //     List<Map<String, dynamic>> queryRows =
-                  //         await DatabaseHelper.instance.queryAll();
-                  //     print(queryRows);
-                  //   },
-                  // ),
                   SizedBox(
                     height: 30,
                   ),
