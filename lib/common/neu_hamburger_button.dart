@@ -111,7 +111,7 @@ class _NeumorphicContainerState extends State<NeumorphicContainer> {
                   )
                 ],
           gradient: LinearGradient(
-            stops: [0,1],
+              stops: [0,1],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [Color(0xffe6e6e6), Color(0xffffffff)]

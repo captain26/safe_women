@@ -348,7 +348,7 @@ class _HomeScreenState extends State<HomeScreen> {
           for (int i = 0; i < data.length; i++) {
             print('sendSOSALERT');
             sendsosSMS('${data[i].phoneNumber}',
-                "HelpMe ${userLocation.lattitude} and ${userLocation.longitude}");
+                "I am in danger. I need help. Please follow my location. https://www.google.com/maps/search/?api=1&query=${userLocation.lattitude},${userLocation.longitude}");
           }
         } else {
           await PlatformAlertDialog(
@@ -506,7 +506,7 @@ class _HomeScreenState extends State<HomeScreen> {
               await platform.invokeMethod('send', <String, dynamic>{
             "phone": "+91" + "${data[i].phoneNumber}",
             "msg":
-                "Hello! Vasu ${userLocation.lattitude} , longitude = ${userLocation.longitude}"
+                "My current Location. https://www.google.com/maps/search/?api=1&query=${userLocation.lattitude},${userLocation.longitude}"
           }); //Replace a 'X' with 10 digit phone number
           print(result);
         } on PlatformException catch (e) {
